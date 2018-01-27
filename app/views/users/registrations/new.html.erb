@@ -46,8 +46,8 @@
         </div>
         <!-- /.tab-pane -->
         <div class="tab-pane" id="tab_2">
-            <% resource.build_ong %>
-            
+            <% resource.build_ong %>            
+            <% resource.build_address %>            
 
             <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= devise_error_messages! %>
@@ -59,19 +59,12 @@
             <%= builder.text_field :name_fantasy, hide_label: true, placeholder: 'Nome Fantasia' %>
 
            
-
-
-            <%= builder.fields_for :address do |a| %>
-            <%= a.text_field :zipcode, hide_label: true, placeholder: 'CEP', data: {provider: :zipcode} %>
-            <%#= builder.collection_select(:ong, :city_id, City.all, :id, :name_with_initial) %>
-            <%#= builder.collection_select(:ong, :city_id, City.all, :id, :name) hide_label: true, placeholder: 'Cidade', data: {provider: :city} %>
-            <%= a.text_field :neighborhood, hide_label: true, placeholder: 'Bairro', data: {provider: :neighborhood}  %>
-            <%= a.text_field :street, hide_label: true, placeholder: 'Rua', data: {provider: :street}  %>
-            <%= a.number_field :number, hide_label: true, placeholder: 'Número' %>
-
-            <%= a.text_field :complement, hide_label: true, placeholder: 'Complemento' %>
             <% end %>
+            
+            <%= f.fields_for :address do |a| %>
+                <%= a.text_field :street, hide_label:true, placeholder: 'Rua' %>
             <% end %>
+         
             <%#= f.text_field :name,autofocus: true, hide_label: true, placeholder: 'Nome' %>
 
             <%= f.email_field :email, hide_label: true, placeholder: 'E-mail', style: 'border-radius:0px' %>
