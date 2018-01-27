@@ -1,0 +1,30 @@
+<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+<%= f.email_field :email, autofocus: true, placeholder: 'E-mail', hide_label: 'true', style: 'border-radius:0px' %>
+
+<%= f.password_field :password, autocomplete: "off", placeholder: 'Senha', hide_label: 'true', style: 'border-radius:0px' %>
+
+
+<%# if devise_mapping.rememberable? -%>
+
+<%#= f.check_box :remember_me %>
+
+<%# end -%>
+
+
+<%= f.submit "Entrar", class: 'btn btn-primary btn-block' %>
+
+<% end %>
+<div class="social-auth-links text-center">
+   
+    <p>- OU -</p>
+   <%= link_to '<i class="fa fa-facebook"></i> Entrar com Facebook'.html_safe, user_facebook_omniauth_authorize_path, class: 'btn btn-block btn-social btn-facebook btn-flat' %>
+        <!--<a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in using
+        Facebook</a>-->
+    <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in using
+        Google+</a>
+</div>
+<br>
+<center>
+    <%= link_to 'Registrar', new_user_registration_path %>
+</center>

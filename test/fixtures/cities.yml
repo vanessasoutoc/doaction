@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  uf: MyString
+  ibge_code: 
+  area: 9.99
+  lat: MyString
+  lng: MyString
+
+two:
+  name: MyString
+  uf: MyString
+  ibge_code: 
+  area: 9.99
+  lat: MyString
+  lng: MyString
