@@ -32,7 +32,38 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <!-- Messages: style can be found in dropdown.less-->
+                            <li class="dropdown messages-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="label label-danger"><%= @messages.count() %></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">Você tem <%= @messages.count() %> mensagens</li>
+                                    <li>
+                                        <!-- inner menu: contains the actual data -->
+                                        <ul class="menu">
+                                            <% @messages.each do |message| %>
+                                            <li><!-- start message -->
+                                              
+                                                <a href="#">
+                                                    <div class="pull-left">
+                                                        <%= image_tag('missing.jpg', :class => 'online', :alt => 'user image')%>
+                                                    </div>
+                                                    <h4>
+                                                        <%= message.user.name%>
 
+                                                    </h4>
+                                                    <p><%= message.message %></p>
+                                                     <small class="pull-right"><i class="fa fa-clock-o"></i> <%= message.created_at.strftime('%d/%m/%Y as %I:%M%p') %></small>
+                                                </a>
+                                            </li>
+                                            <!-- end message -->
+                                            <% end %>
+                                        </ul>
+                                    </li>
+                                    <li class="footer"><a href="#">See All Messages</a></li>
+                                </ul>
+                            </li>
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -129,7 +160,6 @@
                             <ul class="treeview-menu active">
 
                                 <li><%= link_to('<i class="fa fa-circle-o"></i> Adicionar Usuário'.html_safe, new_user_path) %></li>
-
                                 <li><%= link_to('<i class="fa fa-circle-o"></i> Ver Todos'.html_safe, ongs_path) %></li>
 
                             </ul>
@@ -146,11 +176,8 @@
                                 </span>
                             </a>
                             <ul class="treeview-menu active">
-
                                 <li><%= link_to('<i class="fa fa-circle-o"></i> Adicionar Usuário'.html_safe, new_user_path) %></li>
-
                                 <li><%= link_to('<i class="fa fa-circle-o"></i> Ver Todos'.html_safe, users_path) %></li>
-
                             </ul>
                         </li>
                         <% end %>
