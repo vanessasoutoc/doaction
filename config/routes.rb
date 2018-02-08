@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         end
     end
 
+    mount ActionCable.server, at: '/cable'
 
     mount GrapeSwaggerRails::Engine, at: "/documentation"
 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
     root to: 'dashboards#index'
 
     resources :dashboards
+    resources :ongs
 
     resources :users, except: :create
     resources :users, only: [:edit] do

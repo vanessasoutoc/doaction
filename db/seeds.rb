@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-json = ActiveSupport::JSON.decode(File.read('/home/vanessa/dumps/cities/cidades.json'))
+#cidades table
+#json = ActiveSupport::JSON.decode(File.read('/home/vanessa/dumps/cities/cidades.json'))
 
-json.each do |a|
-  City.create!(a)
-end
+#json.each do |a|
+#  City.create!(a)
+#end

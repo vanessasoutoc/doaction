@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require turbolinks
 //= require autocomplete_zipcode
 //= require jquery.slimscroll.min
 //= require jquery.inputmask

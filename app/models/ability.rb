@@ -3,21 +3,21 @@ class Ability
 
     def initialize(user)
 
-    
-            @user = user || User.new # for guest
-            #@user.roles.each { |role| send(role) }
-        
-            if @user.role == 'ong'
-              self.ong
-                #can :read, :all #for guest without roles
-            elsif @user.role == 'admin'
-                self.admin
-            elsif @user.role == '' || @user.role == nil || @user.role == 'usuario'
-                self.user
-            end
-        
-        
-     
+
+        @user = user || User.new # for guest
+        #@user.roles.each { |role| send(role) }
+
+        if @user.role == 'ong'
+            self.ong
+            #can :read, :all #for guest without roles
+        elsif @user.role == 'admin'
+            self.admin
+        elsif @user.role == '' || @user.role == nil || @user.role == 'usuario'
+            self.user
+        end
+
+
+
         #
         # The first argument to `can` is the action you are giving the user 
         # permission to do.
@@ -38,19 +38,20 @@ class Ability
         # https://github.com/ryanb/cancan/wiki/Defining-Abilities
     end
     def ong
-        can :manage, User
+        can :read, User
+        can :update, User
         can :manage, Ong
 
     end
 
     def user
-        can :read, :all
-    end
-    
-    def admin
-        can :manage, User
-     
+        can :read, Ong
     end
 
-    
+    def admin
+        can :manage, User
+        can :manage, Ong
+    end
+
+
 end

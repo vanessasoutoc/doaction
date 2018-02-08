@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+    
     belongs_to :ong, optional: true
     belongs_to :address, optional: true
     #belongs_to :ong, inverse_of: :users, :class_name => 'Ong', :foreign_key => 'ong_id'

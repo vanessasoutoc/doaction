@@ -118,6 +118,24 @@
                             <%= link_to '<i class="fa fa-dashboard"></i> Dashboard'.html_safe,  dashboards_path %>
                         </li>
 
+                        <li class="treeview  <%= active_class('/ongs') %>">
+                            <a href="">
+                                <i class="fa fa-user-circle-o"></i>
+                                <span>Ongs</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu active">
+
+                                <li><%= link_to('<i class="fa fa-circle-o"></i> Adicionar Usuário'.html_safe, new_user_path) %></li>
+
+                                <li><%= link_to('<i class="fa fa-circle-o"></i> Ver Todos'.html_safe, ongs_path) %></li>
+
+                            </ul>
+                        </li>
+
+
                         <% if can? :manager, User %>
                         <li class="treeview  <%= active_class('/users/new') %><%= active_class('/users') %>">
                             <a href="">

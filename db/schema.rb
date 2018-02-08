@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180127192534) do
+ActiveRecord::Schema.define(version: 20180201010457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 20180127192534) do
     t.integer "number"
     t.string "complement", limit: 200
     t.integer "zipcode"
-    t.bigint "city_id"
+    t.string "city", limit: 50
+    t.string "state", limit: 50
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["city_id"], name: "index_addresses_on_city_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 20180127192534) do
     t.string "lng", limit: 35
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "sender_id"
+    t.bigint "receiver_id"
+    t.index ["receiver_id"], name: "index_messages_on_receiver_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "ongs", force: :cascade do |t|
@@ -82,5 +92,6 @@ ActiveRecord::Schema.define(version: 20180127192534) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
-  add_foreign_key "addresses", "cities"
+  add_foreign_key "messages", "users", column: "receiver_id"
+  add_foreign_key "messages", "users", column: "sender_id"
 end
