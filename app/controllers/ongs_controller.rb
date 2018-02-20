@@ -1,12 +1,13 @@
 class OngsController < ApplicationController
-    before_action :set_ongs, only: [:show, :edit, :update, :destroy]
+    before_action :set_ong, only: [:show, :edit, :update, :destroy, :message]
     #before_action :authenticate_user!
 
 
     # GET /companies
     # GET /companies.json
     def index
-        @ongs = Ong.all
+        @messagesNotRead = Message.where('receiver_id = ? and read = ?', current_user.id, false)
+        @ongs = Ong.joins(user: :address)
     end
 
     # GET /companies/1
@@ -61,6 +62,14 @@ class OngsController < ApplicationController
             format.html { redirect_to ongs_url, :flash => {:success => 'Ong excluída com sucesso.'}}
             format.json { head :no_content }
         end
+    end
+
+    def message
+        #@ong = Ong.find(params[:id])
+        puts @ong.name
+    end
+
+    def send_message
     end
 
     private

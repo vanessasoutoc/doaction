@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resources :dashboards
     resources :ongs
 
+    get 'message/:id' => 'ongs#message', as: :message
+    post 'send_message' => 'ongs#send_message'
+
     resources :users, except: :create
     resources :users, only: [:edit] do
         collection do

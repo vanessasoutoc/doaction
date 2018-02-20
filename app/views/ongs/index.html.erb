@@ -1,25 +1,54 @@
-<p id="notice"><%= notice %></p>
+<section class="content-header">
+    <h1>
+        Ongs
+        <small>Todas os Ongs Cadastradas</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="class fa fa-dashboard"></i> Home</a></li>
+        <li class="active"><%= link_to 'Ongs', ongs_path %></li>
+    </ol>
+</section>
 
-<h1>Ongs</h1>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <% if @ongs.present? %>
+            <div class="panel panel-default">
+                <div class="panel-body">
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Cidade</th>
+                                <th colspan="1"></th>
+                            </tr>
+                        </thead>
 
-  <tbody>
-    <% @ongs.each do |ong| %>
-      <tr>
-        <td><%= link_to 'Show', ong %></td>
-        <td><%= link_to 'Edit', edit_ong_path(ong) %></td>
-        <td><%= link_to 'Destroy', ong, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                        <tbody>
+                            <% @ongs.each do |ong| %>
+                            <tr>
+                                <td><%= ong.name %></td>
+                                <td><%= ong.user.address.city %></td>
+                                <td>  <%= link_to '', ong, class: 'glyphicon glyphicon-eye-open' %>
+                                    <%# if current_user.role == 'admin' || current_user.role == 'superadmin' %>
+                                    <%= link_to '', edit_ong_path(ong), class: 'glyphicon glyphicon-edit', :style => 'color:#FFD600' %>
+                                    <%= link_to '', ong, method: :delete, data: { confirm: 'Confirma exclusão?' }, class: 'glyphicon glyphicon-trash', :style => 'color:red' %>
+                                    <%# end %>
+                                    <%= link_to '', message_path(ong), class: 'glyphicon glyphicon-envelope' %>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
 
-<br>
+                    <br>
 
-<%= link_to 'New Ong', new_ong_path %>
+                    <%#= link_to 'New Ong', new_ong_path %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</section>
