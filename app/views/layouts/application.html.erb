@@ -67,7 +67,7 @@
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <%#= image_tag('user2-160x160.jpg', :class => 'user-image', :alt => 'User Image')%>
+                                    <%= image_tag('missing.jpg', :class => 'user-image', :alt => 'User Image')%>
                                     <span class="hidden-xs"><%= current_user.name%></span>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -145,7 +145,7 @@
                         <li class="header">Menu</li>
                         <!--Dashboard link-->
 
-                        <li class="treeview <%= active_class('/dashboards') %>">
+                        <li class="<%= active_class('/dashboards') %>">
                             <%= link_to '<i class="fa fa-dashboard"></i> Dashboard'.html_safe,  dashboards_path %>
                         </li>
 
@@ -159,7 +159,7 @@
                             </a>
                             <ul class="treeview-menu active">
 
-                                <li><%= link_to('<i class="fa fa-circle-o"></i> Adicionar Usuário'.html_safe, new_user_path) %></li>
+                                
                                 <li><%= link_to('<i class="fa fa-circle-o"></i> Ver Todos'.html_safe, ongs_path) %></li>
 
                             </ul>

@@ -10,7 +10,12 @@ class OngsController < ApplicationController
     # GET /companies.json
     def index
         @messagesNotRead = Message.where('receiver_id = ? and read = ?', current_user.id, false)
-        @ongs = Ong.joins(user: :address).where('ongs.id != ?', current_user.ong_id)
+        if(current_user.ong_id != nil)
+            @ongs = Ong.joins(user: :address).where('ongs.id != ?', current_user.ong_id)
+        else
+            @ongs = Ong.joins(user: :address)
+        end
+        
     end
 
     # GET /companies/1

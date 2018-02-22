@@ -12,8 +12,8 @@
 #json.each do |a|
 #  City.create!(a)
 #end
-ongs = Ong.create([{id: 1, name: 'Ong Teste da Vanessa', name_fantasy: 'Ong teste da Vanessa NM fantasy', cnpj: '12345'}])
+ongs = Ong.create([{name: 'Ong Teste da Vanessa', name_fantasy: 'Ong teste da Vanessa NM fantasy', cnpj: '12345'}])
 
-addresses = Address.create([{id: 1, street: 'Rua Rogerio Batista', number: 253, complement: 'ap 106', zipcode: 38060510, city: 'Uberaba', state: 'MG', neighborhood: 'Irmãos Soares'},{id: 2, street: 'Rua Uberlandia', number: 355,  zipcode: 38120000, city: 'Conceição das Alagoas', state: 'MG', neighborhood: 'Centro'}])
+addresses = Address.create([{ street: 'Rua Rogerio Batista', number: 253, complement: 'ap 106', zipcode: 38060510, city: 'Uberaba', state: 'MG', neighborhood: 'Irmãos Soares'},{street: 'Rua Uberlandia', number: 355,  zipcode: 38120000, city: 'Conceição das Alagoas', state: 'MG', neighborhood: 'Centro'}])
 
-users = User.create([{id: 1, name: 'Vanessa Souto', email: 'vanessasoutoc@gmail.com', password:'vane5060', password_confirmation:'vane5060', ong_id: 1, address_id: 1},{id: 2, name: 'Nayara Pantaleão', email: 'nanapantaleao@gmail.com', password:'vane5060', password_confirmation:'vane5060', address_id: 2}])
+users = User.create([{name: 'Vanessa Souto', email: 'vanessasoutoc@gmail.com', password:'vane5060', password_confirmation:'vane5060', ong_id: 1, address_id: 1},{name: 'Nayara Pantaleão', email: 'nanapantaleao@gmail.com', password:'vane5060', password_confirmation:'vane5060', address_id: 2}])
