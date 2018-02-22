@@ -44,7 +44,7 @@
                                         <ul class="menu">
                                             <% @messagesNotRead.each do |message| %>
                                             <li><!-- start message -->
-                                              
+
                                                 <a href="#">
                                                     <div class="pull-left">
                                                         <%= image_tag('missing.jpg', :class => 'online', :alt => 'user image')%>
@@ -54,7 +54,7 @@
 
                                                     </h4>
                                                     <p><%= message.message %></p>
-                                                     <small class="pull-right"><i class="fa fa-clock-o"></i> <%= message.created_at.strftime('%d/%m/%Y as %I:%M%p') %></small>
+                                                    <small class="pull-right"><i class="fa fa-clock-o"></i> <%= message.created_at.strftime('%d/%m/%Y as %I:%M%p') %></small>
                                                 </a>
                                             </li>
                                             <!-- end message -->

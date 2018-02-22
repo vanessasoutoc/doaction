@@ -1,17 +1,10 @@
-<%= form_with(model: message, local: true) do |form| %>
-  <% if message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+<%= bootstrap_form_for(@message) do |m| %>
 
-      <ul>
-      <% message.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= m.text_field :message, label: 'Mensagem', class: 'form-control' %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= m.hidden_field :sender_id, value: current_user.id %>
+<%= m.hidden_field :receiver_id, value: @userReceiver.id %>
+
+<%= m.submit "Enviar", class: 'btn btn-primary' %>
+
 <% end %>

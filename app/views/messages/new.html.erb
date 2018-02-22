@@ -1,5 +1,39 @@
-<h1>New Message</h1>
 
-<%= render 'form', message: @message %>
+<section class="content-header">
+    <h1>
+       <% if(@userReceiver.ong_id != nil) %>
+        <%= @ong.name %>
+        <% end %>
+        <small>Envie sua mensagem para a Ong</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="class fa fa-dashboard"></i> Home</a></li>
+        <li class="active"><%= link_to 'Ongs', ongs_path %></li>
+    </ol>
+</section>
+<%#= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <ul>
+                        <% @oldMessages.each do |message| %>
 
-<%= link_to 'Back', messages_path %>
+                        <p><small>
+                            <% if (message.user.id == current_user.id ) %> 
+                            Você :
+                            <% else %>
+                            <%= message.user.name %>
+                            <% end %>
+                            diz:</small><%= message.message %></p>
+
+                        <% end %>
+                    </ul>
+                    <br><br>
+                    <%= render 'form', message: @message %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -2,12 +2,15 @@ class OngsController < ApplicationController
     before_action :set_ong, only: [:show, :edit, :update, :destroy, :message]
     #before_action :authenticate_user!
 
+    #before_action :set_ong_message, only: [:message]
+
+
 
     # GET /companies
     # GET /companies.json
     def index
         @messagesNotRead = Message.where('receiver_id = ? and read = ?', current_user.id, false)
-        @ongs = Ong.joins(user: :address)
+        @ongs = Ong.joins(user: :address).where('ongs.id != ?', current_user.ong_id)
     end
 
     # GET /companies/1
@@ -65,11 +68,38 @@ class OngsController < ApplicationController
     end
 
     def message
-        #@ong = Ong.find(params[:id])
-        puts @ong.name
+
+        @ong = Ong.joins(:user).find(params[:id])
+        @message = Message.new
+        puts @ong.user.id
+
+        @message.receiver_id = @ong.user.id
+        
     end
 
     def send_message
+        puts 'send_message'
+        puts message_params
+
+        @message = Message.new(message_params)
+        @user = User.find(@message.receiver_id)
+        @ong = Ong.find(@user.ong_id)
+        
+        respond_to do |format|
+            if @message.save
+              
+                @oldMessages = Message.joins('LEFT JOIN users ON users.id = ongs.sender_id').where('sender_id = ? and receiver_id = ?', current_user.id, @ong.user.id)
+                  
+                  format.json { render json: @ong }
+                  format.json { render json: @oldMessages }
+                format.html { redirect_to message_path(@ong), flash: { success: 'Mensagem enviada com sucesso.' }}
+                #format.json { render :show, status: :created, location: @message }
+            else
+                format.html { render :message, location: @ong }
+                format.json { render json:  @message.errors, status: :unprocessable_entity }
+                format.json { render json:  @ong }
+            end
+        end
     end
 
     private
@@ -81,5 +111,9 @@ class OngsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def ong_params
         params.require(:ong).permit(:name, :fantasy_name, :cnpj, :image, users_attributes:[:id, :name, :email, :birth, :password, :password_confirmation, :ong_id, :role], address_attributes: [:street, :number, :neighborhood, :complement, :zipcode, :city_id])
+    end
+
+    def message_params
+        params.require(:message).permit(:message, :sender_id, :receiver_id)
     end
 end

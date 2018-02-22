@@ -8,11 +8,41 @@
         <li class="active"><%= link_to 'Ongs', ongs_path %></li>
     </ol>
 </section>
-
+<%#= hidden_field_tag :authenticity_token, form_authenticity_token %>
 <section class="content">
     <div class="row">
         <div class="col-md-12">
-        
+            <div class="panel panel-default">
+                <div class="panel-body">
+                   <ul>
+                      <% @oldMessages.each do |message| %>
+                      
+                       <p><small><%= message.user.name %> diz:</small><%= message.message %></p>
+                       
+                       <% end %>
+                   </ul>
+                   
+                    <%= bootstrap_form_for @message, :url => 'send' do |m| %>
+                    
+                    <% if @message.errors.any? %>
+                    <div id="error_explanation">
+                        <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+                        <ul>
+                            <% @message.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                    <% end %>
+                    <%= m.text_field :message, label: 'Mensagem' %>
+                    <%= m.hidden_field :sender_id, value: current_user.id %>
+                    <%= m.hidden_field :receiver_id, value: @ong.user.id %>
+                    
+                    <%= m.submit "Enviar", class: 'btn btn-primary' %>
+                    <% end %>
+                </div>
+            </div>
         </div>
     </div>
 </section>
