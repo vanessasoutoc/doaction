@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: doaction_production
-  username: doaction
-  password: <%= ENV['DOACTION_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  #database: doaction_production
+  #username: doaction
+  #password: <%= ENV['DOACTION_DATABASE_PASSWORD'] %>
