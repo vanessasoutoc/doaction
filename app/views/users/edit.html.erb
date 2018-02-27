@@ -1,0 +1,24 @@
+<section class="content-header">
+    <h1>
+        Editar Usuário
+        <small>Editando dados do usuário</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active"><%= link_to 'Editar Usuário', edit_user_path(@user) %></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body pad">
+                    <%= render 'form_edit', user: @user %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

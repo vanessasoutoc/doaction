@@ -16,8 +16,6 @@ class Ability
             self.user
         end
 
-
-
         #
         # The first argument to `can` is the action you are giving the user 
         # permission to do.
@@ -45,7 +43,9 @@ class Ability
     end
 
     def user
+        can :index, User
         can :read, Ong
+        can :edit, User
     end
 
     def admin

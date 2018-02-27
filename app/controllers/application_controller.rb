@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
 
-    before_action :index
+    before_action :set_message
 
     private 
 
-    def index
+    def set_message
         # @countMessageNotRead = Message.where('receiver_id = ? and read = ?', current_user.id, false).count
         # puts @countMessageNotRead
         if(current_user.present?)

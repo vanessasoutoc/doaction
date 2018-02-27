@@ -1,0 +1,91 @@
+<section class="content-header">
+    <h1>
+        Usuários
+        <small>Todos os Usuários</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="class fa fa-dashboard"></i> Home</a></li>
+        <li class="active"><%= link_to 'Usuários', users_path %></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <% if @users.present? %>
+                                <table class="table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nome</th>
+                                            <th>E-mail</th>
+                                            <th>Empresa</th>
+                                            <th>Último acesso</th>
+                                            <th colspan="1"></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <% @users.each do |user| %>
+                                        <tr>
+                                            <td><%= user.id %></td>
+                                            <td><%= user.name %></td>
+                                            <td><%= user.email %></td>
+                                            <td><% if(user.company) %><%= user.company.name %><% end %></td>
+                                            <td><% if user.last_sign_in_at != nil %><%= user.last_sign_in_at.strftime("%-d/%-m/%Y %H:%M") %><% end %></td>
+                                            <td>
+                                                <%= link_to '', user, :class => 'glyphicon glyphicon-eye-open' %>
+                                                <%= link_to '', edit_user_path(user), :class => 'glyphicon glyphicon-edit', :style => 'color:#FFD600'  %>
+                                                <% if current_user.id != user.id && user.email != 'admin@admin.com.br' %>
+                                                <%= link_to '', user, method: :delete, data: { confirm: 'Você tem certeza que deseja excluir?' }, :class => 'glyphicon glyphicon-trash', :style => 'color:red' %>
+                                                <% end %>   
+
+                                            </td>
+                                        </tr>
+
+                                        <% end %>
+
+                                    </tbody>
+                                </table>
+                                <% end %>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="infoImportCsv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Instroções Importação de Usuários</h4>
+            </div>
+            <div class="modal-body">
+                Você pode importar usuários facilmente através de um arquivo '.CSV', contendo os dados dos usuário.
+                <br>
+                O arquivo deve contér os seguintes dados: nome, e-mail, nascimento, unidade, departamento, cargo.
+                <br>
+                <%= link_to 'Click aqui', '/example.csv', :format => 'csv' %> para baixar um arquivo exemplo.
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

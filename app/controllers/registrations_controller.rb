@@ -7,13 +7,13 @@ class RegistrationsController < Devise::RegistrationsController
  private
   def sign_up_params
     params.require(:user).permit( :email, :name, :password, :password_confirmation, :role,
-	ong_attributes:[:name, :name_fantasy, :cnpj, :cnpj], address_attributes: [:street, :number, :neighborhood, :complement, :zipcode, :city_id ])
+	ong_attributes:[:name, :name_fantasy, :cnpj, :cnpj], address_attributes: [:street, :number, :neighborhood, :complement, :zipcode, :city, :state ])
   end
  
   def account_update_params
     # For updates we make sure to let the Company ID pass through or the form will 
 	# generate a new company every time we edit our details
     params.require(:user).permit(:email, :name, :password, :password_confirmation, :current_password,
-	ong_attributes:[:id, :name, :name_fantasy, :cnpj, address_attributes: [:street, :number, :neighborhood, :complement, :zipcode, :city_id ]])
+	ong_attributes:[:id, :name, :name_fantasy, :cnpj, address_attributes: [:street, :number, :neighborhood, :complement, :zipcode, :city, :state ]])
   end
 end

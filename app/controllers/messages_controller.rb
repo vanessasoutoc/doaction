@@ -13,7 +13,6 @@ class MessagesController < ApplicationController
     # GET /notices/new
     def new
         #authorize! :new, Message
-        @messagesNotRead = Message.where('receiver_id = ? and read = ?', current_user.id, false)
         @userReceiver = User.find(params[:id])
         if @userReceiver.ong_id != nil
             @ong = Ong.find(@userReceiver.ong_id)

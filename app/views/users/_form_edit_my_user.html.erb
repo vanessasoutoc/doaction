@@ -1,0 +1,45 @@
+<%= bootstrap_form_for(@user, url: { action: "update_my_data"})  do |f| %>
+
+<%= f.fields_for :ong do |o| %>
+<h4>Dados da Ong</h4>
+<%= o.text_field :name, label: 'Nome Ong', style: 'border-radius:0px'  %>
+<%= o.text_field :name_fantasy, label: 'Nome Fantasia', style: 'border-radius:0px' %>
+<%= o.text_field :cnpj, label: 'CNPJ', style: 'border-radius:0px' %>
+<br>
+<h4>Dados do Responsável</h4>
+
+<% end %>
+
+
+<%= f.text_field :name,  autofocus: true, :class => "form-control", :label => 'Nome' %>
+<%= f.email_field :email, :class => "form-control", :label => 'E-mail' %>
+
+<%= f.fields_for :address do |a| %>
+<br>
+<h4>Endereço</h4>
+<%= a.text_field :zipcode, label: 'CEP', placeholder: 'CEP', style: 'border-radius:0px'  %>
+<%= a.text_field :street, label: 'Endereço', placeholder: 'Rua', style: 'border-radius:0px' %>
+<%= a.number_field :number, label: 'Número', placeholder: 'Numero', style: 'border-radius:0px' %>
+<%= a.text_field :complement, label: 'Complemento', placeholder: 'Complemento', style: 'border-radius:0px' %>
+<%= a.text_field :neighborhood, label: 'Bairro', placeholder: 'Bairro',  data: {provider: :neighborhood}, style: 'border-radius:0px' %>
+<%= a.text_field :city, label: 'Cidade', placeholder: 'Cidade', style: 'border-radius:0px'  %>
+<%= a.text_field :state, label: 'Estado', placeholder: 'Estado', style: 'border-radius:0px'  %>
+<% end %>
+
+<!--	<div class="form-group">
+<%= f.label 'Senha:' %>
+<% if @validatable %>
+<em>(<%= @minimum_password_length %> caracteres minímos)</em>
+<% end %><br />
+<%= f.password_field :password, autocomplete: "off", :class => "form-control" %>
+</div>
+
+<div class="form-group">
+<%= f.label 'Confirmar senha:' %><br />
+<%= f.password_field :password_confirmation, autocomplete: "off", :class => "form-control" %>
+</div>-->
+
+
+
+<%= f.submit "Salvar", class: 'btn btn-primary pull-right', style: 'margin-right: 10px' %>
+<% end %>

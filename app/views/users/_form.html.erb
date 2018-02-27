@@ -1,0 +1,21 @@
+<%= bootstrap_form_for User.new, url: create_user_path do |f| %>
+
+<%= f.text_field :name, autofocus: true, label: 'Nome' %>
+
+<%= f.email_field :email, label: 'E-mail' %>
+
+<% if @validatable %>
+<em>(<%= @minimum_password_length %> caracteres minímos)</em>
+<% end %>
+<%= f.password_field :password, autocomplete: "off", label: 'Senha' %>
+
+<%= f.password_field :password_confirmation, autocomplete: "off", label: 'Confirmar Senha' %>
+
+
+<div class="actions">
+    <%#= link_to 'Voltar', users_path, :class => 'btn btn-default pull-right' %>
+    <%= f.submit "Salvar", class: 'btn btn-primary pull-right', style: 'margin-right: 10px' %>
+    <% end %>
+</div>
+
+<br><br>

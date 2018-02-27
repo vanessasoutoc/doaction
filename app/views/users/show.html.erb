@@ -1,0 +1,58 @@
+<section class="content-header">
+    <h1>
+        Usuário
+        <small>Dados do usuário</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class=""><%= link_to 'Usuários', users_path %></li>
+        <li class="active"><%= link_to 'Novo Usuário', new_user_path %></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body pad">
+                    <form role="form">
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">E-mail</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" value="<%= @user.email %>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nome</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" value="<%= @user.name %>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Data Nascimento</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" value="<%= @user.birth.strftime("%d/%m/%Y") %>" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Unidade</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" value="<%= @user.unity %>" readonly>
+                        </div> 
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Departamento</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" value="<%= @user.department %>" readonly>
+                        </div> 
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Cargo</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" value="<%= @user.office %>" readonly>
+                        </div>
+
+
+
+                        <!-- /.box-body -->
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

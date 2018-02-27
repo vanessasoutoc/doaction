@@ -79,21 +79,7 @@
                                             <small>Membro desde <%= current_user.created_at.strftime('%b de %Y') %></small>
                                         </p>
                                     </li>
-                                    <!-- Menu Body 
-<li class="user-body">
-<div class="row">
-<div class="col-xs-4 text-center">
-<a href="#">Followers</a>
-</div>
-<div class="col-xs-4 text-center">
-<a href="#">Sales</a>
-</div>
-<div class="col-xs-4 text-center">
-<a href="#">Friends</a>
-</div>
-</div>
 
-</li>
 <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
@@ -122,31 +108,21 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <%= image_tag('user2-160x160.jpg', :class => 'img-circle', :alt => 'User Image')%>
+                            <%= image_tag('missing.jpg', :class => 'img-circle', :alt => 'User Image')%>
                         </div>
                         <div class="pull-left info">
                             <p><br><%= current_user.name %></p>
                             <!--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
                         </div>
                     </div>
-                    <!-- search form 
-<form action="#" method="get" class="sidebar-form">
-<div class="input-group">
-<input type="text" name="q" class="form-control" placeholder="Search...">
-<span class="input-group-btn">
-<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-</button>
-</span>
-</div>
-</form>
-<!-- /.search form -->
+
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu tree" data-widget="tree">
                         <li class="header">Menu</li>
                         <!--Dashboard link-->
 
                         <li class="<%= active_class('/dashboards') %>">
-                            <%= link_to '<i class="fa fa-dashboard"></i> Dashboard'.html_safe,  dashboards_path %>
+                            <%= link_to '<i class="fa fa-dashboard"></i> <span>Dashboard</span>'.html_safe,  dashboards_path %>
                         </li>
 
                         <li class="treeview  <%= active_class('/ongs') %>">
@@ -159,7 +135,7 @@
                             </a>
                             <ul class="treeview-menu active">
 
-                                
+
                                 <li><%= link_to('<i class="fa fa-circle-o"></i> Ver Todos'.html_safe, ongs_path) %></li>
 
                             </ul>

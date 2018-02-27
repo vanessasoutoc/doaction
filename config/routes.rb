@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     end
 
     post 'create_user' => 'users#create', as: :create_user  
-    get 'edit_user' => 'users#edit', as: :edit_my_user
+    get 'edit_user' => 'users#edit_my_data', as: :edit_my_user
+    patch 'update_my_data' => 'users#update_my_data', as: :update_my_data
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
