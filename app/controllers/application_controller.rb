@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
     def set_messages
         if(current_user.present?)
-            @messagesNotRead = Message.where('receiver_id = ? and read = ?', current_user.id, false)
+            @messagesNotRead = Message.where("read = 'f' OR read IS NULL AND receiver_id = ?", current_user.id)
         end
     end
 

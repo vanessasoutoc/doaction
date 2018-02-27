@@ -8,7 +8,6 @@ class DashboardsController < ApplicationController
             @countOngs = Ong.count
             @countMessages = Message.count
             @countCities = Ong.joins(user: :address).where('addresses.city NOTNULL').count
-            puts @countCities
         end
     end
 end
