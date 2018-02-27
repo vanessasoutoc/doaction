@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
     private 
 
     def set_messages
-        # @countMessageNotRead = Message.where('receiver_id = ? and read = ?', current_user.id, false).count
-        # puts @countMessageNotRead
         if(current_user.present?)
             @messagesNotRead = Message.where('receiver_id = ? and read = ?', current_user.id, false)
         end
