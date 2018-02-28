@@ -73,7 +73,7 @@
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <%#= image_tag('user2-160x160.jpg', :class => 'img-circle', :alt => 'User Image')%>
+                                        <%= image_tag('missing.jpg', :class => 'img-circle', :alt => 'User Image')%>
                                         <p>
                                             <%= current_user.name %> - Web Developer
                                             <small>Membro desde <%= current_user.created_at.strftime('%b de %Y') %></small>

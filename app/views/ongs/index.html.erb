@@ -20,8 +20,9 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Cidade</th>
-                                <th colspan="1"></th>
+                                <th>CNPJ</th>
+                                <th>Cidade/Estado</th>
+                                <th></th>
                             </tr>
                         </thead>
 
@@ -29,13 +30,14 @@
                             <% @ongs.each do |ong| %>
                             <tr>
                                 <td><%= ong.name %></td>
-                                <td><%= ong.user.address.city %></td>
-                                <td>  <%= link_to '', ong, class: 'glyphicon glyphicon-eye-open' %>
-                                    <%# if current_user.role == 'admin' || current_user.role == 'superadmin' %>
+                                <td><%= ong.cnpj %></td>
+                                <td><%= ong.user.address.city %> / <%= ong.user.address.state %></td>
+                                <td style="font-size:18px">  <%= link_to '', ong, class: 'glyphicon glyphicon-eye-open', :title => 'Ver Dados da Ong','data-toggle' => 'tooltip', 'data-placement' => 'right' %>
+                                    <% if current_user.role == 'admin' || current_user.role == 'superadmin' %>
                                     <%= link_to '', edit_ong_path(ong), class: 'glyphicon glyphicon-edit', :style => 'color:#FFD600' %>
                                     <%= link_to '', ong, method: :delete, data: { confirm: 'Confirma exclusão?' }, class: 'glyphicon glyphicon-trash', :style => 'color:red' %>
-                                    <%# end %>
-                                    <%= link_to '', new_path(ong.user.id), class: 'glyphicon glyphicon-envelope' %>
+                                    <% end %>
+                                    &emsp;<%= link_to '', new_path(ong.user.id), class: 'glyphicon glyphicon-envelope', :title => 'Enviar Mensagem','data-toggle' => 'tooltip', 'data-placement' => 'right' %>
                                 </td>
                                 <td></td>
                             </tr>

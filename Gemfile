@@ -23,6 +23,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'cancan'
 # bootstrap
 gem 'bootstrap-sass'   #3.2.0
+# ionicons for rails
+gem 'ionicons-rails'
 
 #fonts-awesome
 gem "font-awesome-rails"

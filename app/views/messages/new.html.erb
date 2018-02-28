@@ -8,7 +8,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="class fa fa-dashboard"></i> Home</a></li>
-        <li class="active"><%= link_to 'Ongs', ongs_path %></li>
+        <!--<li class="active"><%= link_to 'Ongs', ongs_path %></li>-->
     </ol>
 </section>
 <%#= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -19,15 +19,15 @@
                 <div class="panel-body">
                     <ul>
                         <% @oldMessages.each do |message| %>
-
-                        <p><small>
+                        <p>
+                           <small>
                             <% if (message.user.id == current_user.id ) %> 
                             Você disse:
                             <% else %>
                             <%= message.user.name %> disse:
                             <% end %>
-                            </small><%= message.message %></p>
-
+                            </small><%= message.message %>
+                            </p>
                         <% end %>
                     </ul>
                     <br><br>

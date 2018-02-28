@@ -1,4 +1,101 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_ong_path(@ong) %> |
-<%= link_to 'Back', ongs_path %>
+<section class="content-header">
+    <h1>
+
+        <%= @ong.name %>
+        <small>Dados da Ong: <%= @ong.name %></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="class fa fa-dashboard"></i> Home</a></li>
+        <li class="active"><%= link_to 'Ongs', ongs_path %></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-success">
+
+                <!-- Inline Form -->
+                <div class="box-header with-border">
+                    <h3 class="box-title"><%= @ong.name %></h3>
+                    <div class="pull-right">
+                        <%= link_to '<i class="ion ion-chatbubble-working"></i>'.html_safe, new_path(@ong.user.id), :style => 'font-size:18px', :title => 'Enviar Mensagem','data-toggle' => 'tooltip', 'data-placement' => 'left'  %>
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form class="form-horizontal">
+                    <div class="box-body">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Nome</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nome" value="<%= @ong.name_fantasy %>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Nome Fantasia</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nome Fantasia" value="<%= @ong.name_fantasy %>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">CNPJ</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nome Fantasia" value="<%= @ong.cnpj %>" readonly>
+                                </div>
+                            </div>
+                            <% if @ong.telephone %>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Tel. Contato</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Tel. Contato" value="<%= @ong.telephone %>" readonly>
+                                </div>
+                            </div>
+                            <% end %>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Endereço</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Endereço" value="<%= @ong.user.address.street %>" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Nº</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nome Fantasia" value="<%= @ong.user.address.number %>" readonly>
+                                </div>
+                            </div>
+                            <% if @ong.user.address.complement %>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Complemento</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nome Fantasia" value="<%= @ong.user.address.complement %>" readonly>
+                                </div>
+                            </div>
+                            <% end %>
+                            <% if @ong.user.address.city %>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-4 control-label">Cidade / Estado</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="inputEmail3" placeholder="Nome Fantasia" value="<%= @ong.user.address.city %> / <%= @ong.user.address.state %>" readonly>
+                                </div>
+                            </div>
+                            <% end %>
+                        </div>
+                        <!-- /.box-body -->
+
+                    </div>
+
+                    <!-- /.box-footer -->
+                </form>
+            </div>
+            <!-- /.box -->
+
+
+
+
+        </div>
+    </div>
+</section>
