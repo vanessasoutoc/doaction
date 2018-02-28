@@ -1,6 +1,6 @@
 class OngsController < ApplicationController
     before_action :set_ong, only: [:show, :edit, :update, :destroy, :message]
-    #before_action :authenticate_user!
+    before_action :authenticate_user!
 
     #before_action :set_ong_message, only: [:message]
 
@@ -9,7 +9,7 @@ class OngsController < ApplicationController
     # GET /companies
     # GET /companies.json
     def index
-        @messagesNotRead = Message.where('receiver_id = ? and read = ?', current_user.id, false)
+        
         if(current_user.ong_id != nil)
             @ongs = Ong.joins(user: :address).where('ongs.id != ?', current_user.ong_id)
         else

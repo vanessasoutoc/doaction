@@ -1,0 +1,10 @@
+<%= bootstrap_form_for @message, :url => createresponse_path do |m| %>
+
+<%= m.text_field :message, label: 'Mensagem', class: 'form-control' %>
+
+<%= m.hidden_field :sender_id, value: current_user.id %>
+<%= m.hidden_field :receiver_id, value: @userReceiver.id %>
+
+<%= m.submit "Enviar", class: 'btn btn-primary' %>
+
+<% end %>

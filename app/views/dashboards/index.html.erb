@@ -91,7 +91,7 @@
                     <div class="item">
                         <%= image_tag('missing.jpg', :class => 'online', :alt => 'user image')%>
                         <p class="message">
-                            <a href="#" class="name">
+                            <a href="/messages/newresponse/<%= message.sender_id %>" class="name">
                                 <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 
                                     <%= message.created_at.strftime('%d/%m/%Y as %I:%M%p') %></small>
                                 <%= message.user.name %>

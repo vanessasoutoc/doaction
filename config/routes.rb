@@ -21,7 +21,8 @@ Rails.application.routes.draw do
     resources :messages
 
     get 'messages/new/:id' => 'messages#new', as: 'new'
-    #post 'message/send' => 'ongs#send_message'
+    get 'messages/newresponse/:id' => 'messages#newresponse', as: 'newresponse'
+    post 'messages/createresponse' => 'messages#createresponse', as: 'createresponse'
 
     resources :users, except: :create
     resources :users, only: [:edit] do

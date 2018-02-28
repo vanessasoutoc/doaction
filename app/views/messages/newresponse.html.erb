@@ -3,8 +3,16 @@
     <h1>
         <% if(@userReceiver.ong_id != nil) %>
         <%= @ong.name %>
+        <% else %>
+        <%= @userReceiver.name %>
         <% end %>
-        <small>Envie sua mensagem para a Ong</small>
+        <small>Envie sua mensagem para
+           <% if(@userReceiver.ong_id != nil) %>
+            <%= @ong.name %>
+            <% else %>
+            <%= @userReceiver.name %>
+            <% end %>
+        </small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="/"><i class="class fa fa-dashboard"></i> Home</a></li>
@@ -31,7 +39,7 @@
                         <% end %>
                     </ul>
                     <br><br>
-                    <%= render 'form', message: @message %>
+                    <%= render 'formresponse', message: @message %>
                 </div>
             </div>
         </div>
